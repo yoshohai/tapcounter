@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="description" content="A simple tap counter PWA">
+    <title>Tap Counter</title>
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./icons/icon-192.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Sync badge -->
+    <div id="sync-badge">● Synced</div>
+
+    <!-- Main tap view -->
+    <div id="tap-view">
+        <button id="tap-btn" aria-label="Tap to count">
+            <div id="tap-count">0</div>
+        </button>
+    </div>
+
+    <!-- Minus button -->
+    <button id="minus-btn" aria-label="Decrease count">−</button>
+
+    <!-- Menu FAB -->
+    <button id="menu-toggle" aria-label="Open menu">☰</button>
+
+    <!-- Bottom sheet menu -->
+    <div id="menu-sheet">
+        <div class="handle"></div>
+        <div class="menu-items">
+            <div class="menu-item" id="menu-dashboard">
+                <div class="icon blue">📊</div>
+                <span>Dashboard</span>
+            </div>
+            <div class="menu-item" id="menu-new">
+                <div class="icon green">＋</div>
+                <span>New Counter</span>
+            </div>
+            <div class="menu-item" id="menu-backup">
+                <div class="icon orange">💾</div>
+                <span>Backup</span>
+            </div>
+            <div class="menu-item" id="menu-gdrive">
+                <div class="icon red">☁️</div>
+                <span>Connect Drive</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <div id="dashboard-header">
+            <h2>Dashboard</h2>
+            <button id="dashboard-close" aria-label="Close dashboard">✕</button>
+        </div>
+
+        <div id="chart-section">
+            <h3>Daily Activity</h3>
+            <div id="chart-scroll">
+                <div id="bar-chart"></div>
+            </div>
+        </div>
+
+        <div id="counter-list-section">
+            <h3>All Counters</h3>
+            <div id="counter-list"></div>
+        </div>
+    </div>
+
+
+
+    <!-- GDrive Connect dialog -->
+    <div id="gdrive-dialog-overlay">
+        <div id="new-dialog">
+            <h3>Connect Google Drive</h3>
+            <p style="font-size: 13px; color: var(--text-dim); margin-bottom: 16px; line-height: 1.4;">
+                Enter your Google Cloud OAuth2 Client ID to enable Drive sync.
+            </p>
+            <input type="text" id="gdrive-client-id" placeholder="Client ID (xyz.apps.googleusercontent.com)"
+                autocomplete="off">
+            <div class="dialog-btns">
+                <button id="gdrive-cancel-btn"
+                    style="background: var(--bg-card); color: var(--text-dim);">Cancel</button>
+                <button id="gdrive-connect-btn" style="background: var(--accent); color: #fff;">Connect</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast"></div>
+
+    <!-- Scripts -->
+    <script src="./db.js"></script>
+    <script src="./gdrive.js"></script>
+    <script src="./app.js"></script>
+
+    <!-- Google Identity Services (for GDrive) -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+
+</html>
