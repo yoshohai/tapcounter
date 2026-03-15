@@ -322,7 +322,8 @@
 
     // ===== Service Worker =====
     if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('./sw.js').catch(e => console.warn('SW reg failed:', e));
+        navigator.serviceWorker.register('./sw.js', { scope: './' })
+            .catch(e => console.warn('SW reg failed:', e));
     }
 
     // ===== Start =====

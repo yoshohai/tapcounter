@@ -2,7 +2,7 @@
     "name": "Tap Counter",
     "short_name": "TapCount",
     "description": "A simple tap counter PWA",
-    "start_url": "./index.html",
+    "start_url": ".",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#0a0a0f",
